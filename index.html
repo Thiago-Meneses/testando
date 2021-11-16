@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id='demo'></div>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+            </tr>
+            <tr>
+                <td id="eita"></td>
+                <td id="puts"></td>
+            </tr>
+        </table>
+
+        <script>
+            function sendStuff(esse) {
+                 document.getElementById("eita").innerHTML = esse
+            }
+
+            function asyncTest(sendStuff) {
+                let myVar = new XMLHttpRequest();
+
+                myVar.open('GET', "oloko/dois.json");
+                myVar.onload = function () {
+                    if (myVar.status == 200){
+                        // sendStuff(this.responseText + "Status:" + myVar.status);
+                        const qwe = JSON.parse(this.responseText);
+                        sendStuff(qwe.name);
+                    }
+                }
+                myVar.send();
+
+                    // if (myVar.status == 200){
+                    //     sendStuff(this.responseText + "Status:" + myVar.status);
+                    // } else {
+                    //     sendStuff("Error: " + myVar.status);
+                    // }
+            }
+
+            asyncTest(sendStuff);
+        </script>
+    </body>
+</html>
