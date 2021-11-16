@@ -26,22 +26,24 @@
 
                 myVar.open('GET', "oloko/dois.json");
                 myVar.onload = function () {
-                    const qwe = JSON.parse(this.responseText);
-                    sendStuff(qwe.name);
+                    if (myVar.status == 200){
+                        // sendStuff(this.responseText + "Status:" + myVar.status);
+                        const qwe = JSON.parse(this.responseText);
+                        sendStuff(qwe.name);
+                    }
                 }
                 myVar.send();
+
+                    // if (myVar.status == 200){
+                    //     sendStuff(this.responseText + "Status:" + myVar.status);
+                    // } else {
+                    //     sendStuff("Error: " + myVar.status);
+                    // }
             }
             asyncTest(sendStuff);
 
             function ferrou(){
-                let kkk = new XMLHttpRequest();
-
-                kkk.open('GET', "oloko/db.json");
-                kkk.onload = function () {
-                    const rrr = JSON.parse(this.responseText);
-                    sendStuff(rrr.users[0].firstName);
-                }
-                kkk.send();
+                sendStuff(qwe.age);
             }
         </script>
     </body>
