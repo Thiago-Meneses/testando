@@ -27,7 +27,7 @@
                 myVar.open('GET', "oloko/dois.json");
                 myVar.onload = function () {
                     const qwe = JSON.parse(this.responseText);
-                    sendStuff(qwe.name);
+                    sendStuff(qwe.age);
                 }
                 myVar.send();
             }
